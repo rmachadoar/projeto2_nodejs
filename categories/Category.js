@@ -14,5 +14,7 @@ const Category = connection.define('categories', {
     }
 });
 
+// Ao criar novos relacionamentos é necessário ATT o BD de acordo com a linha de baixo
+// Category.sync({force: true}); // Vai recriar a tabela e depois de recriar, excluir a função (Deixarei comentado para estudo)
 
 module.exports = Category;

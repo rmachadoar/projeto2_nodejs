@@ -5,6 +5,11 @@ const connection = require("./database/database"); // Importa para esse arquivo 
 
 const categoriesController = require("./categories/CategoriesController"); // Importa as rotas de categorias criadas
 const articlesController = require("./articles/articlesController");// Importa as rotas de ARTIGOS criadas
+
+const Article = require("./articles/Article"); // Importar as models para que o Node.js crie as tabelas com novos relacionamentos ao rodar
+const Category = require("./categories/Category"); // Importar as models para que o Node.js crie as tabelas com novos relacionamentos ao rodar
+
+
 // View Engine 2°
 app.set('view engine', 'ejs'); // 2
 
