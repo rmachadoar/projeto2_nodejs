@@ -3,6 +3,8 @@ const app = express(); // 1° etapa
 const bodyParser = require("body-parser"); // Trabalhar com formularios
 const connection = require("./database/database"); // Importa para esse arquivo o connection
 
+const categoriesController = require("./categories/CategoriesController"); // Importa as rotas de categorias criadas
+const articlesController = require("./articles/articlesController");// Importa as rotas de ARTIGOS criadas
 // View Engine 2°
 app.set('view engine', 'ejs'); // 2
 
@@ -24,6 +26,13 @@ connection
     }).catch((error) => { // Caso dê erro, cai no catch e exibe erro.
         console.log(error)
     });
+
+
+
+
+app.use("/", categoriesController); // Utiliza as rotas criadas no arquivo CategoriesController
+app.use("/", articlesController); // Utiliza as rotas cridas no articleController.
+
 
 app.get("/", (req, res) => {// 1° etapa
     res.render("index");;
