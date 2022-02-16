@@ -4,9 +4,29 @@
 
 const express = require("express"); 
 const router = express.Router();
+const Category = require("./Category");
+const slugify = require("slugify")
+
 
 router.get("/admin/categories/new", (req, res)=> {
     res.render("admin/categories/new");
+});
+
+
+router.post("/categories/save", (req, res) => { // POST SEMPRE que trabalhar com formularios
+    var title = req.body.title; // cria varíavel TITLE e armazena o valor do formulário que está com NAME = "TITLE";
+    if(title != undefined){
+
+        Category.create({ // Funcao para inserir no banco de dados os dados title e slug
+            title: title,
+            slug: slugify(title)   // instala biblioteca SLUGIFY para otimizar string para URL
+        }).then(() => {
+            res.redirect("/");
+        })
+
+    }else{
+        res.redirect("admin/categoires/new");
+    }
 });
 
 
