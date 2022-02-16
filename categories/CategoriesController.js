@@ -5,7 +5,7 @@
 const express = require("express"); 
 const router = express.Router();
 const Category = require("./Category");
-const slugify = require("slugify")
+const slugify = require("slugify");
 
 
 router.get("/admin/categories/new", (req, res)=> {
@@ -19,14 +19,22 @@ router.post("/categories/save", (req, res) => { // POST SEMPRE que trabalhar com
 
         Category.create({ // Funcao para inserir no banco de dados os dados title e slug
             title: title,
-            slug: slugify(title)   // instala biblioteca SLUGIFY para otimizar string para URL
+            slug: slugify(title)   // instalar antes a biblioteca SLUGIFY para otimizar string para URL
         }).then(() => {
             res.redirect("/");
         })
 
     }else{
-        res.redirect("admin/categoires/new");
+        res.redirect("admin/categories/new");
     }
+});
+
+
+router.get("/admin/categories", (req, res) => {
+    Category.findAll().then(categories => { // Pega os dados da tabela categories
+        res.render("admin/categories/index", {categories: categories}); // Armazena os dados da tabela categories na VAR CATEGORIES e exporta para a view (HTML)
+    })
+    
 });
 
 

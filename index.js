@@ -11,7 +11,7 @@ const Category = require("./categories/Category"); // Importar as models para qu
 
 
 // View Engine 2°
-app.set('view engine', 'ejs'); // 2
+app.set('view engine', 'ejs'); // Define a view engine a ser usada, no caso EJS
 
 
 // Static
@@ -20,8 +20,8 @@ app.use(express.static('public'));
 
 
 //Body parser
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false})); // Comando para trabalharmos com formularios (Pegar dados do mesmo)
+app.use(bodyParser.json()); // JSON
 
 //Database
 connection
