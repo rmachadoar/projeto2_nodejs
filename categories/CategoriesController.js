@@ -37,6 +37,27 @@ router.get("/admin/categories", (req, res) => {
     
 });
 
+router.post("/categories/delete", (req, res) => {
+    var id = req.body.id;
 
+    if(id != undefined){
+        if(!isNaN(id)){ // Se for um numero
+
+            Category.destroy({
+                where: { // Destruir uma categoria onde o ID da categoria for igual ID
+                    id: id
+                }
+            }).then(() => {
+                res.redirect("/admin/categories");
+            })
+
+
+        }else{
+            res.redirect("/admin/categories");
+        }
+    }else{ // se for nulo
+        res.redirect("/admin/categories");
+    }
+})
 
 module.exports = router; // Exporta as rotas da CATEGORIAS para ser capaz de utiliza-las em outro arquivo
