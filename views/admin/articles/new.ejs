@@ -11,7 +11,7 @@
                         <div class="form-group">
                             <label for="">Título do artigo</label><br>
                             <input type="text" class="form-control" name="title" aria-describedby="titleDescription" placeholder="Defina ooo título do artigo"><br>
-                            <textarea name="body" id="" class="form-control" placeholder="Escreva o artigo aqui"></textarea>
+                            <textarea name="body" id="article" class="form-control" placeholder="Escreva o artigo aqui"></textarea>
                             <button class="btn btn-primary">Cadastrar</button>
                         </div>
                     </form>
@@ -21,3 +21,15 @@
 
 
 <%- include('../../partials/footer.ejs'); %>
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+
+    tinymce.init({
+        selector: "#article", // Diz qual Textarea irá ser vinculada ao tinymce, através do ID da textarea
+        plugins: [
+            //Plugins que adicionam funcionalidades ao editor de texto
+            'advlist autolink link image lists print preview hr searchreplace wordcount'
+        ]
+    })
+
+</script>
