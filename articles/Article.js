@@ -9,7 +9,7 @@ const Category = require("../categories/Category");
 
 
 
-const Article = connection.define("articles", {
+const Article = connection.define('articles', {
     title:{
         type: Sequelize.STRING,
         allowNull: false
