@@ -9,8 +9,12 @@ const Article = require("./Article");
 const slugify = require("slugify")
 
 router.get("/admin/articles", (req, res) => {
+    Article.findAll({
+        include: [{model: Category}] // Puxa os dados da Cateoria
+    }).then(articles => {
+        res.render("admin/articles/index", {articles:articles});
+    });
     
-    res.send("Rota de artigos");
 });
 
 
